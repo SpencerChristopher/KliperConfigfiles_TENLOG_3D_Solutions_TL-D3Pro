@@ -1,6 +1,6 @@
 [include macros.cfg]
-[include extruders.cfg]
-[include steppers.cfg]
+#[include extruders.cfg]
+#[include steppers.cfg]
 
 # [save_variables]
 # filename: ~/klipper_config/variables.cfg
@@ -17,14 +17,10 @@
 # start gcode:  prep_print EXTRUDER={print_temperature} BED={print_bed_temperature}
 # end gcode:    END_PRINT
 
-
-
-
 [printer]
 max_velocity: 500
 max_accel: 2500
-# max_accel_to_decel: 950 - no longer used
-minimum_cruise_ratio: 0.5
+max_accel_to_decel: 950
 kinematics: cartesian
 max_z_velocity: 20
 max_z_accel: 30
@@ -89,7 +85,7 @@ filament_diameter: 1.75
 heater_pin: ar11
 sensor_type: EPCOS 100K B57560G104F
 sensor_pin: analog15
-min_temp: -100
+min_temp: 0
 max_temp: 270
 max_extrude_only_distance: 250.0
 
@@ -104,7 +100,7 @@ filament_diameter: 1.640
 heater_pin: ar10
 sensor_type: EPCOS 100K B57560G104F
 sensor_pin: analog13
-min_temp: -100	
+min_temp: 0	
 max_temp: 270
 max_extrude_only_distance: 250.0
 
@@ -141,7 +137,7 @@ dir_pin: !ar61
 enable_pin: !ar56
 rotation_distance: 40
 microsteps: 16
-endstop_pin: ^ar14
+endstop_pin: ^!ar14
 position_endstop: 0
 position_max: 300
 homing_speed: 60
@@ -172,14 +168,14 @@ endstop_pin: ^!ar19
 [display_status]
 
 [virtual_sdcard]
-path: /home/pi/printer_data/gcodes
+path: ~/gcode_files
 
 
 [heater_bed]
 heater_pin: ar8
 sensor_type: EPCOS 100K B57560G104F
 sensor_pin: analog14
-min_temp: -100
+min_temp: 0
 max_temp: 110
 #control: pid
 
